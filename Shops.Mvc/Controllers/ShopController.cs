@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shops.Core.Modules;
+using Shops.Core.Services;
 using Shops.DataAccess;
 
 namespace Shops.Mvc.Controllers
@@ -12,16 +13,18 @@ namespace Shops.Mvc.Controllers
     public class ShopController : Controller
     {
         private readonly ShopsDbContext _context;
+        private readonly IShopService _shopService;
 
-        public ShopController(ShopsDbContext context)
+        public ShopController(ShopsDbContext context, IShopService shopService)
         {
             _context = context;
+            _shopService = shopService;
         }
 
         // GET: Shop
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Shops.ToListAsync());
+            return View(await _shopService.GetAllShopsAsync());
         }
 
         // GET: Shop/Details/5
@@ -32,8 +35,7 @@ namespace Shops.Mvc.Controllers
                 return NotFound();
             }
 
-            var shop = await _context.Shops
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var shop = await _shopService.SingleOrDefaultAsync(m => m.Id == id);
             if (shop == null)
             {
                 return NotFound();
@@ -57,8 +59,8 @@ namespace Shops.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(shop);
-                await _context.SaveChangesAsync();
+                await _shopService.AddShopAsync(shop);
+                
                 return RedirectToAction(nameof(Index));
             }
             return View(shop);
@@ -72,7 +74,7 @@ namespace Shops.Mvc.Controllers
                 return NotFound();
             }
 
-            var shop = await _context.Shops.FindAsync(id);
+            var shop = await _shopService.GetShopByIdAsync((int) id);
             if (shop == null)
             {
                 return NotFound();

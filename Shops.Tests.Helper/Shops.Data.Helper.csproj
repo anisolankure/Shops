@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shops.Core\Shops.Core.csproj" />
-    <ProjectReference Include="..\Shops.DataAccess\Shops.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

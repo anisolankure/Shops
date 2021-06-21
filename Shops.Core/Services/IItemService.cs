@@ -6,6 +6,7 @@ namespace Shops.Core.Services
 {
     public interface IItemService
     {
-        Task<IEnumerable<Item>> GetAllItems();
+        Task<IEnumerable<Item>> GetAllItemsAsync();
+        Task<Item> GetItemByIdAsync(int id);
     }
 }

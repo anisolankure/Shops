@@ -8,15 +8,15 @@ namespace Shops.DataAccess.Repositories
 {
     public class ItemRepository : Repository<Item>, IItemRepository
     {
-        public ItemRepository(ShopsDbContext context) : base(context)
+        public ItemRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<IEnumerable<Item>> GetAllItems()
+        public async Task<IEnumerable<Item>> GetAllItemsWithShop()
         {
-            return await IndianShopsDbContext.Items.ToListAsync();
+            return await ShopsDbContext.Items.ToListAsync();
         }
 
-        private ShopsDbContext IndianShopsDbContext => Context as ShopsDbContext;
+        private ShopsDbContext ShopsDbContext => Context as ShopsDbContext;
     }
 }

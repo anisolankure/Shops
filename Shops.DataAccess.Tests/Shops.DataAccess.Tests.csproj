@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shops.Tests.Helper\Shops.Tests.Helper.csproj" />
+    <ProjectReference Include="..\Shops.DataAccess\Shops.DataAccess.csproj" />
+    <ProjectReference Include="..\Shops.Tests.Helper\Shops.Data.Helper.csproj" />
   </ItemGroup>
 
 </Project>

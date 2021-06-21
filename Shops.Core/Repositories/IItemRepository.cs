@@ -6,6 +6,6 @@ namespace Shops.Core.Repositories
 {
     public interface IItemRepository : IRepository<Item>
     {
-        Task<IEnumerable<Item>> GetAllItems();
+        Task<IEnumerable<Item>> GetAllItemsWithShop();
     }
 }
