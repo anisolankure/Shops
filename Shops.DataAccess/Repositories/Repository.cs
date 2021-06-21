@@ -19,7 +19,8 @@ namespace Shops.DataAccess.Repositories
 
         public ValueTask<TEntity> GetByIdAsync(int id)
         {
-            return Context.Set<TEntity>().FindAsync(id);
+            var result = Context.Set<TEntity>().FindAsync(id);
+            return result;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Shops.Core;
 using Shops.Core.Modules;
@@ -15,9 +17,44 @@ namespace Shops.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task<IEnumerable<Item>> GetAllItems()
+        public Task<IEnumerable<Item>> GetAllItemsAsync()
         {
             return _unitOfWork.Items.GetAllItems();
+        }
+
+        public async Task<Item> GetItemByIdAsync(int id)
+        {
+            return await _unitOfWork.Items.GetByIdAsync(id);
+        }
+
+        public IEnumerable<Item> Find(Expression<Func<Item, bool>> predicate)
+        {
+            return _unitOfWork.Items.Find(predicate);
+        }
+
+        public async Task<Item> SingleOrDefaultAsync(Expression<Func<Item, bool>> predicate)
+        {
+            return await _unitOfWork.Items.SingleOrDefaultAsync(predicate);
+        }
+
+        public async Task AddItemAsync(Item item)
+        {
+            await _unitOfWork.Items.AddAsync(item);
+        }
+
+        public async Task AddItemsAsync(IEnumerable<Item> items)
+        {
+            await _unitOfWork.Items.AddRangeAsync(items);
+        }
+
+        public void RemoveItem(Item item)
+        {
+            _unitOfWork.Items.Remove(item);
+        }
+
+        public void RemoveItems(IEnumerable<Item> items)
+        {
+           _unitOfWork.Items.RemoveRange(items);
         }
     }
 }

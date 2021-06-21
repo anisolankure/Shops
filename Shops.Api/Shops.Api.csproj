@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Shops.Core\Shops.Core.csproj" />
     <ProjectReference Include="..\Shops.DataAccess\Shops.DataAccess.csproj" />
     <ProjectReference Include="..\Shops.Mvc\Shops.Mvc.csproj" />
+    <ProjectReference Include="..\Shops.Tests.Helper\Shops.Data.Helper.csproj" />
   </ItemGroup>
 
 </Project>

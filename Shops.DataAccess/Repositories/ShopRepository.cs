@@ -12,9 +12,9 @@ namespace Shops.DataAccess.Repositories
 
         public async Task<IEnumerable<Shop>> GetAllShopsWithItems()
         {
-            return await IndianShopsDbContext.Shops.ToListAsync();
+            return await ShopsDbContext.Shops.ToListAsync();
         }
 
-        private ShopsDbContext IndianShopsDbContext => Context as ShopsDbContext;
+        private ShopsDbContext ShopsDbContext => Context as ShopsDbContext;
     }
 }

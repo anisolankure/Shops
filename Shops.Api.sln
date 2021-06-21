@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shops.Mvc", "Shops.Mvc\Shop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shops.DataAccess.Tests", "Shops.DataAccess.Tests\Shops.DataAccess.Tests.csproj", "{09F4C56C-D384-4D87-90AA-8F64A0D860BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shops.Services.Tests", "Shops.Services.Tests\Shops.Services.Tests.csproj", "{7348CD50-B581-47C3-8659-B2487F187EFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shops.Services.Tests", "Shops.Services.Tests\Shops.Services.Tests.csproj", "{7348CD50-B581-47C3-8659-B2487F187EFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shops.Tests.Helper", "Shops.Tests.Helper\Shops.Tests.Helper.csproj", "{176326E8-BC61-4334-A06B-20A2BC0F415B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shops.Data.Helper", "Shops.Tests.Helper\Shops.Data.Helper.csproj", "{176326E8-BC61-4334-A06B-20A2BC0F415B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

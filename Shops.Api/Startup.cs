@@ -24,7 +24,9 @@ namespace Shops.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ShopsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            //services.AddDbContext<ShopsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddDbContext<ShopsDbContext>(options => options.UseInMemoryDatabase("Shops"));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IShopService, ShopService>();

@@ -19,7 +19,15 @@ namespace Shops.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shop>>> GetShops()
         {
-            return new OkObjectResult(await _shopService.GetAllShops());
+            return new OkObjectResult(await _shopService.GetAllShopsAsync());
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<Shop>> GetShopById(int id)
+        {
+            var shop = await _shopService.GetShopByIdAsync(id);
+            return Ok(shop);
         }
     }
 }

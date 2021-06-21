@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using Shops.Core;
 using Shops.Core.Modules;
+using Shops.Data.Helper;
 
 namespace Shops.Services.Tests
 {
@@ -20,11 +22,12 @@ namespace Shops.Services.Tests
         }
 
         [Test]
-        public void GetAllItems()
+        public async Task GetAllItems()
         {
-            _unitOfWorkMock.Setup(x => x.Items.GetAllItems()).ReturnsAsync(It.IsAny<List<Item>>());
-            var result = Task.Run(async() => await _sut.GetAllItems());
+            _unitOfWorkMock.Setup(x => x.Items.GetAllItems()).ReturnsAsync(TestDataBase.TestItems);
+            var result = await _sut.GetAllItemsAsync();
             Assert.IsNotNull(result);
+            Assert.AreEqual(4, result.Count());
         }
     }
 }

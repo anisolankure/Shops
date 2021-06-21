@@ -19,7 +19,7 @@ namespace Shops.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
-            return new OkObjectResult(await _itemService.GetAllItems());
+            return new OkObjectResult(await _itemService.GetAllItemsAsync());
         }
     }
 }
