@@ -19,7 +19,7 @@ namespace Shops.Services
 
         public Task<IEnumerable<Item>> GetAllItemsAsync()
         {
-            return _unitOfWork.Items.GetAllItems();
+            return _unitOfWork.Items.GetAllItemsWithShop();
         }
 
         public async Task<Item> GetItemByIdAsync(int id)

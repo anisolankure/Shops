@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Shops.DataAccess.Repositories;
@@ -18,13 +19,12 @@ namespace Shops.DataAccess.Tests.Repositories
             _itemRepository = new ItemRepository(context);
             await TestData.Seed(context);
         }
-
-
+        
         [Test]
         public async Task GetAllItems_ReturnsItemsCorrectly()
         {
-            var items = await _itemRepository.GetAllItems();
-            Assert.IsNotEmpty(items);
+            var items = await _itemRepository.GetAllItemsWithShop();
+            Assert.AreEqual(4, items.Count());
         }
     }
 }

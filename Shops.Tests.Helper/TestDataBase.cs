@@ -28,5 +28,17 @@ namespace Shops.Data.Helper
                 new Item() { Id = 4, ShopId = 1, ExpiryDateTime = DateTime.MaxValue, Name = "Idli", Type = "ReadyToEat"}
             };
         }
+
+        public static IList<Shop> TestShopsWithItems()
+        {
+            var listOfShops = new List<Shop>
+            {
+                new Shop() {Id = 1, Name = "Shakti", Items = TestItems()},
+                new Shop() {Id = 2, Name = "Falcon", Items = TestItems()},
+                new Shop() {Id = 3, Name = "AsianStore", Items = TestItems()},
+                new Shop() {Id = 4, Name = "Popat", Items = TestItems()}
+            };
+            return listOfShops;
+        }
     }
 }

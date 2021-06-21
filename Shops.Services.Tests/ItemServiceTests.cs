@@ -20,12 +20,22 @@ namespace Shops.Services.Tests
         }
 
         [Test]
-        public async Task GetAllItems()
+        public async Task GetAllItemsAsync_ReturnsAllItemsCorrectly()
         {
-            _unitOfWorkMock.Setup(x => x.Items.GetAllItems()).ReturnsAsync(TestDataBase.TestItems);
+            _unitOfWorkMock.Setup(x => x.Items.GetAllItemsWithShop()).ReturnsAsync(TestDataBase.TestItems);
             var result = await _sut.GetAllItemsAsync();
             Assert.IsNotNull(result);
             Assert.AreEqual(4, result.Count());
+        }
+
+        [Test]
+        public async Task GetItemByIdAsync_ReturnsExpectedItemsCorrectly()
+        {
+            var expectedResult = TestDataBase.TestItems().SingleOrDefault(x => x.Id == 1);
+            _unitOfWorkMock.Setup(x => x.Items.GetByIdAsync(1)).ReturnsAsync(expectedResult);
+            var result = await _sut.GetItemByIdAsync(1);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Id);
         }
     }
 }

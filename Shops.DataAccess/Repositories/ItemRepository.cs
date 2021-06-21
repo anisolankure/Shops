@@ -12,7 +12,7 @@ namespace Shops.DataAccess.Repositories
         {
         }
 
-        public async Task<IEnumerable<Item>> GetAllItems()
+        public async Task<IEnumerable<Item>> GetAllItemsWithShop()
         {
             return await ShopsDbContext.Items.ToListAsync();
         }

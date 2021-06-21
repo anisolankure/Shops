@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,10 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Shops.Core;
 using Shops.Core.Services;
 using Shops.DataAccess;
-using Shops.Mvc.Data;
 using Shops.Services;
 
-namespace Shops.Api.Shops.Mvc
+namespace Shops.Mvc
 {
     public class Startup
     {
@@ -25,16 +23,10 @@ namespace Shops.Api.Shops.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ShopsDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IShopService, ShopService>();
             services.AddControllersWithViews();
