@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using Shops.Core;
-using Shops.Core.Modules;
 using Shops.Data.Helper;
 
 namespace Shops.Services.Tests

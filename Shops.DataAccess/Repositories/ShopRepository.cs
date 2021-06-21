@@ -8,7 +8,7 @@ namespace Shops.DataAccess.Repositories
 {
     public class ShopRepository : Repository<Shop>, IShopRepository
     {
-        public ShopRepository(ShopsDbContext context) : base(context) { }
+        public ShopRepository(DbContext context) : base(context) { }
 
         public async Task<IEnumerable<Shop>> GetAllShopsWithItems()
         {
