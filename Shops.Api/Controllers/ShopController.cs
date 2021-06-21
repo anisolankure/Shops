@@ -27,6 +27,12 @@ namespace Shops.Api.Controllers
         public async Task<ActionResult<Shop>> GetShopById(int id)
         {
             var shop = await _shopService.GetShopByIdAsync(id);
+
+            if (shop == null)
+            {
+                return NotFound();
+            }
+
             return Ok(shop);
         }
     }

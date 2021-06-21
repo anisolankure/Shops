@@ -17,9 +17,23 @@ namespace Shops.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsAsync()
         {
             return new OkObjectResult(await _itemService.GetAllItemsAsync());
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<Shop>> GetItemByIdAsync(int id)
+        {
+            var item = await _itemService.GetItemByIdAsync(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(item);
         }
     }
 }
